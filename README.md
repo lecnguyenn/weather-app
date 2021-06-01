@@ -17,6 +17,9 @@
 <p>You can run the project running the command </p>
 ### `npm start`
 
+<h1> What i learned ? </h1>
+<p>I learned how to use some React Patterns like High-Order Component and presentational components </p>
+
 
 
 
