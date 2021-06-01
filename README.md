@@ -15,7 +15,7 @@
 </ul> <br>
 
 <p>You can run the project running the command </p>
-npm start
+### `npm start`
 
 
 
