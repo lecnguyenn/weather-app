@@ -23,12 +23,13 @@ const useStyles = makeStyles({
     rightContaier:{
         background: 'linear-gradient(to bottom, #000055, #3399FF)',
         height:'80%',
-        width:'70%'
+        width:'65%'
     }
 });
 
 const Weather = () =>{
     const classes = useStyles();
+    
     return(
         <Box className={classes.component}>
             <Box className={classes.leftContainer}></Box>

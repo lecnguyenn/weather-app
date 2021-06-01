@@ -1,5 +1,8 @@
+
+import React, { useEffect, useState } from "react";
 import {Box,  Button,  makeStyles,  TextField } from "@material-ui/core";
-import React from "react";
+import {getData} from '../service/api';
+import  Infomation  from './Infomation';
 
 const useStyle = makeStyles({
     component:{
@@ -13,7 +16,9 @@ const useStyle = makeStyles({
     button:{
         width: 200,
         height: 40,
-        background: '#436EEE'
+        background: '#436EEE',
+        marginTop: 6,
+        color: '#fff'
     }
 })
 
@@ -21,27 +26,56 @@ const useStyle = makeStyles({
 
 const Form = () =>{
     const classes = useStyle();
+    const [data, setData] = useState();
+    const [city, setCity] = useState('');
+    const [country, setCountry] = useState('');
+    const [click, handleClick] = useState(false);
+
+
+    useEffect(() => {
+        const getDataWeather = async () =>{
+          city && await getData(city, country).then(response =>{
+            setData(response.data)
+            console.log(response.data);
+         })
+        }
+        getDataWeather();
+        handleClick(false);
+    }, [click]);
+    
+    const handleCityChange = (value) => {
+        setCity(value);
+    }
+    const handleCountryChange = (value) =>{
+        setCountry(value);
+    }
     return( 
+        <React.Fragment>
         <Box className={classes.component}>
         <TextField
         className={classes.input}
          inputProps={{className: classes.input}}
+         onChange={(e) => handleCityChange(e.target.value)}
          id="outlined-basic" 
          label="Thành Phố" 
          variant="outlined" 
         />
         <TextField
         className={classes.input}
-         inputProps={{className: classes.input}}
+        inputProps={{className: classes.input}}
+        onChange={(e) => handleCountryChange(e.target.value)}
         id="outlined-basic" 
         label="Quốc Gia"
          variant="outlined"
         />
 
-        <Button
-         variant="contained"
+        <Button variant="contained" color="primary" onClick={() => handleClick(true)}
          className={classes.button}>Xem Thông Tin</Button>
+
         </Box>
+        
+        <Infomation data={data}/>
+        </React.Fragment>
         
     )
 }
