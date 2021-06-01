@@ -4,3 +4,18 @@
 
 <h1> Screen </h1> <br>
 <img src="screen.PNG" />
+ <br> 
+ <h1> Implementation </h1>
+ 
+ I used these react libraries for the project:
+ <ul>
+  <li> Material-UI</li>
+  <li> Axios</li>
+  <li> React</li>
+</ul> <br>
+
+<p>You can run the project running the command </p>
+npm start
+
+
+
